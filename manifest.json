@@ -1,0 +1,19 @@
+{
+  "name": "Force Google Locale",
+  "description": "Firefox extension that forces the locale of Google sites through the URL",
+  "author": "Dietrich Ayala",
+  "version": "1.0.0",
+  "applications": {
+    "gecko": {
+    }
+  },
+  "background" : {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+		"<all_urls>"
+  ],
+  "manifest_version": 2
+}
