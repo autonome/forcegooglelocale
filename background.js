@@ -34,7 +34,7 @@ function modifyRequest(e) {
 browser.webRequest.onBeforeSendHeaders.addListener(
   modifyRequest,
   {
-    urls: ['<all_urls>'],
+    urls: ['http://*/*', 'https://*/*'],
     types: ['main_frame']
   },
   [ 'blocking' ]
