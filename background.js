@@ -20,12 +20,13 @@ function getLang(languageCode) {
 }
 
 function modifyRequest(e) {
-  if (e.url.indexOf('google.') != -1 &&
-      e.url.indexOf('hl=' + langTag) == -1) {
-    e.url += (e.url.indexOf('?') != -1 ? '&' : '?') + 'hl=' + langTag;
-
+  let url = new URL(e.url);
+  const labels = url.hostname.split(".").reverse().slice(1, 3);
+  if (!url.searchParams.has('hl') &&
+    (labels.includes('google') || labels.includes('youtube'))) {
+    url.searchParams.append('hl', langTag);
     return {
-      redirectUrl: e.url
+      redirectUrl: url.toString()
     };
   }
 }
