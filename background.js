@@ -1,13 +1,23 @@
-let langTag = 'en';
+let langTag = getLang(browser.i18n.getUILanguage()) || 'en';
+setLang();
 
-(async () => {
+async function setLang() {
   let al = await browser.i18n.getAcceptLanguages();
   al.some(l => {
-    if (l.length == 2) {
-      langTag = l;
+    if (lang = getLang(l)) {
+      return langTag = lang;
     }
   });
-})();
+}
+
+function getLang(languageCode) {
+  if (languageCode) {
+    const lang = languageCode.split('-')[0];
+    if (lang.length === 2) {
+      return lang;
+    }
+  }
+}
 
 function modifyRequest(e) {
   if (e.url.indexOf('google.') != -1 &&
